@@ -1,0 +1,15 @@
+#menu{
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(31, 130, 195);
+    max-width: 100%;
+}
+
+#menu img{
+    margin: 10px;
+    margin-left: 2%;
+}
+
+.nav-link{
+    color: white;
+}
