@@ -7,12 +7,20 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from './Componentes/Login/Login';
 import Home from './Componentes/Home/Home';
+import Clientes from './Componentes/Clientes/Clientes';
+import Pecas from './Componentes/Pecas/Pecas';
+import Orcamentos from './Componentes/Orcamentos/Orcamentos';
+import Usuarios from './Componentes/Usuarios/Usuarios';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
         <Route exact path='/' component={Login}/>
         <Route exact path='/home' component={Home}/>
+        <Route exact path='/clientes' component={Clientes}/>
+        <Route exact path='/pecas' component={Pecas}/>
+        <Route exact path='/orcamentos' component={Orcamentos}/>
+        <Route exact path='/usuarios' component={Usuarios}/>
         <Redirect from='*' to='/' />
     </Switch>
   </BrowserRouter>,
