@@ -15,7 +15,7 @@ const EditarServico = () => {
     return (
         <a>
             <Button type="submit" variant="warning" className="mb-2" onClick={handleShow}>Editar</Button>
-            <Button type="submit" variant="danger">Remover</Button>
+            <Button type="submit" variant="danger" id="remover">Remover</Button>
 
             <Modal size="lg" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

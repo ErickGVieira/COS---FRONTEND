@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CriarCliente.css';
+import './CriarOrdemDeServico.css';
 import axios from 'axios';
 
 import { Form, Button, Modal } from 'react-bootstrap';
@@ -29,7 +29,7 @@ const EditarCliente = () => {
     return (
         <a>
             <Button type="submit" variant="warning" className="mb-2" onClick={handleShow}>Editar</Button>
-            <Button type="submit" variant="danger">Remover</Button>
+            <Button type="submit" variant="danger" id="remover">Remover</Button>
 
             <Modal size="lg" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -37,22 +37,40 @@ const EditarCliente = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
+                    <Form>
                         <Form.Group>
-                            <Form.Label>Nome</Form.Label>
-                            <Form.Control type="text" placeholder="Nome" onChange={state.cliente.nome} onChange={e => setNome(e.target.value)} />
+                            <Form.Label>Nome do Cliente</Form.Label>
+                            <Form.Control type="text" placeholder="Nome" value="Erick"/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Cpf</Form.Label>
-                            <Form.Control type="text" placeholder="Cpf" onChange={state.cliente.cpf} onChange={e => setCpf(e.target.value)} />
+                            <Form.Label>Serviço Solicitado</Form.Label>
+                            <Form.Control type="text" placeholder="Cpf" value="Troca de Pneu"/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Telefone</Form.Label>
-                            <Form.Control type="text" placeholder="Telefone" onChange={state.cliente.telefone} onChange={e => setTelefone(e.target.value)} />
+                            <Form.Label>Serviço Executado</Form.Label>
+                            <Form.Control type="text" placeholder="Cpf" value="-"/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>E-mail</Form.Label>
-                            <Form.Control type="text" placeholder="E-mail" onChange={state.cliente.email} onChange={e => setEmail(e.target.value)} />
+                            <Form.Label>Data início</Form.Label>
+                            <Form.Control type="text" placeholder="E-mail" value="28-09-2020 15:00"/>
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Data Fim</Form.Label>
+                            <Form.Control type="text" placeholder="E-mail" value="28-09-2020 15:00"/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Solicitante</Form.Label>
+                            <Form.Control type="text" placeholder="E-mail" value="Erick"/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Executor</Form.Label>
+                            <Form.Control type="text" placeholder="E-mail" value="-"/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Status</Form.Label>
+                            <Form.Control type="text" placeholder="E-mail" value="solicitada"/>
+                        </Form.Group>
+                    </Form>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>

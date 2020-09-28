@@ -1,14 +1,30 @@
 import React from 'react';
 import './OrdemDeServico.css';
-import Menu from '../Menu/Menu'
+import axios from 'axios';
 
 import { Container, Row, Col, Table, Form, Button } from 'react-bootstrap';
-import Logo from '../../Imagens/logo.jpg';
 
 import CriarOrdemDeServico from '../Modal/Ordem de Serviço/CriarOrdemDeServico';
-const url = "http://localhost:1100/api/OrdemDeServico/";
+import VisualizarOrdemDeServico from '../Modal/Ordem de Serviço/VisualizarOrdemDeServico';
+import EditarOrdemDeServico from '../Modal/Ordem de Serviço/EditarOrdemDeServico';
+
+const url = "http://localhost:1100/api/";
+
+const states = {
+    ordemDeServicos: [
+
+    ]
+}
 
 export default class OrdemDeServico extends React.Component {
+
+    state = {...states};
+
+    componentWillMount(){
+        axios["get"](url + `OrdemDeServico/obtemTodos`).then(resp => {
+            this.setState({ordemDeServicos: resp.data});
+        });
+    }
 
     render() {
         return (
@@ -42,10 +58,28 @@ export default class OrdemDeServico extends React.Component {
                             <th>Servico Executado</th>
                             <th>Data Inicio</th>
                             <th>Status</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        {
+                            this.state.ordemDeServicos.map(function(OrdemDeServico){
+                                return(
+                                    <tr key={OrdemDeServico.id}>
+                                        <td>{OrdemDeServico.id}</td>
+                                        <td>{OrdemDeServico.cliente.nome}</td>
+                                        <td>{OrdemDeServico.servico.descricao}</td>
+                                        <td>{OrdemDeServico.servico1.descricao}</td>
+                                        <td>{OrdemDeServico.dataInicio}</td>
+                                        <td>{OrdemDeServico.status.descricao}</td>
+                                        <td>
+                                            <VisualizarOrdemDeServico ordemDeServico={OrdemDeServico.id}/>
+                                            <EditarOrdemDeServico ordemDeServico={OrdemDeServico.id}/>
+                                        </td>
+                                    </tr>
+                                );
+                            })
+                        }
                     </tbody>
                 </Table>
             </Container>

@@ -9,13 +9,15 @@ const url = "http://localhost:1100/api/";
 const state = {
     ordemDeServico: {
         idCliente: 0,
-        idServicoSolicitado: 0,
-        idServicoExecutado: 0,
-        idStatus: 0,
+        idServicoSolicitado: 1,
+        idServicoExecutado: 1,
+        idStatus: 1,
         dataInicio: null,
         dataFim: null,
-        idSolicitante: 0,
-        idExecutor: 0
+        idSolicitante: 2,
+        idExecutor: 2,
+        cliente: "",
+        servicoSolicitado: ""
     },
     clientes: [],
     status: [],
@@ -28,27 +30,18 @@ const CriarOrdemDeServico = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const setIdCliente = (id) => state.ordemDeServico.idCliente = id;
-    const setIdServicoSolicitado = (id) => state.ordemDeServico.idServicoSolicitado = id;
-    const setIdServicoExecutado = (id) => state.ordemDeServico.idServicoExecutado = id;
-    const setIdStatus = (id) => state.ordemDeServico.idStatus = id;
-    const setDataInicio = (dataInicio) => state.ordemDeServico.dataInicio = dataInicio;
-    const setIdSolicitante = (id) => state.ordemDeServico.idSolicitante = id;
+    const setIdCliente = (idCliente) => state.ordemDeServico.idCliente = idCliente;
+    const setIdServicoSolicitado = (idServicoSolicitado) => state.ordemDeServico.idServicoSolicitado = idServicoSolicitado;
 
     const salvar = () => {
         axios["post"](url + `ordemDeServico/cria`, state.ordemDeServico).then(resp => {
-            console.log(resp.data);
+            console.log(state.ordemDeServico);
             handleClose();
         });
     }
 
     axios["get"](url + `cliente/obtemTodos`).then(resp => {
         state.clientes = resp.data;
-    });
-
-    axios["get"](url + `status/obtemTodos`).then(resp => {
-        state.status = resp.data;
-        console.log(resp.data);
     });
 
     axios["get"](url + `servico/obtemTodos`).then(resp => {
@@ -70,15 +63,15 @@ const CriarOrdemDeServico = () => {
                         <Form>
                             <Form.Group>
                                 <Form.Label>Cliente</Form.Label>
-                                <Form.Control as="select" value={state.ordemDeServico.idCliente} onChange={(e) => setIdCliente(e.target.value)}>
+                                <Form.Control as="select" value={state.ordemDeServico.cliente} onChange={(e) => setIdCliente(e.target.value)}>
                                     {state.clientes.map((cliente) => <option key={cliente.id} value={cliente.id}>{cliente.nome}</option>)}
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Serviço Solicitado</Form.Label>
-                                <Form.Control as="select" value={state.ordemDeServico.idServicoSolicitado} onChange={(e) => setIdServicoSolicitado(e.target.value)}>
+                                <Form.Control as="select" value={state.ordemDeServico.servicoSolicitado} onChange={(e) => setIdServicoSolicitado(e.target.value)}>
                                     {state.servicos.map((servico) => <option key={servico.id} value={servico.id}>{servico.descricao}</option>)}
-                                </Form.Control>                            
+                                </Form.Control>
                             </Form.Group>
                         </Form>
                     </Modal.Body>

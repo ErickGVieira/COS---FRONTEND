@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './CriarPeca.css';
+import './CriarPagamento.css';
 import axios from 'axios';
 
-import { Container, Row, Col, Table, Form, Button, Modal } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 
 const url = "http://localhost:1100/api/";
 
-const EditarPeca = () => {
+const EditarPagamento = () => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -19,13 +19,21 @@ const EditarPeca = () => {
 
             <Modal size="lg" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Editar serviço</Modal.Title>
+                    <Modal.Title>Editar cliente</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Descrição</Form.Label>
-                            <Form.Control type="text" placeholder="Nome" value="Parafuso" />
+                            <Form.Label>Ordem de Serviço</Form.Label>
+                            <Form.Control type="text" value="12 - Erick"/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Valor</Form.Label>
+                            <Form.Control type="text" value="150"/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Tipo Pagamento</Form.Label>
+                            <Form.Control type="text" value="Dinheiro"/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -42,4 +50,4 @@ const EditarPeca = () => {
     );
 }
 
-export default EditarPeca;
+export default EditarPagamento;

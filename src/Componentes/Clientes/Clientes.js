@@ -70,6 +70,7 @@ export default class Clientes extends React.Component {
                                         <tr key={cliente.id}>
                                             <td>{cliente.id}</td>
                                             <td>{cliente.nome}</td>
+                                            <td>{cliente.cpf}</td>
                                             <td>{cliente.telefone}</td>
                                             <td>{cliente.email}</td>
                                             <td>
