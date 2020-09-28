@@ -30,6 +30,9 @@ export default class Menu extends React.Component {
                                 <Nav.Link href="/usuarios" eventKey="usuarios">Usuários</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
+                                <Nav.Link href="/pagamentos" eventKey="pagamentos">Pagamentos</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
                                 <Nav.Link href="/servicos" eventKey="servicos">Servicos</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>

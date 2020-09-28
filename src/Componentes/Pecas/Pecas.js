@@ -1,13 +1,31 @@
 import React from 'react';
 import './Pecas.css';
 import Menu from '../Menu/Menu'
+import axios from 'axios';
 
 import { Container, Row, Col, Table, Form, Button } from 'react-bootstrap';
-import Logo from '../../Imagens/logo.jpg';
 
-const url = "http://localhost:1100/api/pecas/";
+import CriarPeca from '../Modal/Peca/CriarPeca';
+import VisualizarPeca from '../Modal/Peca/VisualizarPeca';
+import EditarPeca from '../Modal/Peca/EditarPeca';
+
+const url = "http://localhost:1100/api/";
+
+const states = {
+    pecas: [
+
+    ]
+}
 
 export default class Pecas extends React.Component {
+
+    state = {...states};
+
+    componentWillMount(){
+        axios["get"](url + `peca/obtemTodos`).then(resp => {
+            this.setState({pecas: resp.data});
+        });
+    }
 
     render() {
         return (
@@ -29,7 +47,7 @@ export default class Pecas extends React.Component {
                             </Row>
                         </Col>
                         <Col md={1}>
-                            <Button type="submit" className="mb-2">Adicionar</Button>
+                            <CriarPeca />
                         </Col>
                     </Row>
 
@@ -39,10 +57,24 @@ export default class Pecas extends React.Component {
                             <tr>
                                 <th>#</th>
                                 <th>Descricao</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            {
+                                this.state.pecas.map(function (peca) {
+                                    return (
+                                        <tr key={peca.id}>
+                                            <td>{peca.id}</td>
+                                            <td>{peca.descricao}</td>
+                                            <td>
+                                                <VisualizarPeca peca={peca.id} />
+                                                <EditarPeca servico={peca.id} />
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            }
                         </tbody>
                     </Table>
                 </Container>

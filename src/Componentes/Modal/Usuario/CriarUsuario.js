@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Usuario.css';
+import './CriarUsuario.css';
 import axios from 'axios';
 
 import { Container, Row, Col, Table, Form, Button, Modal } from 'react-bootstrap';
@@ -22,7 +22,7 @@ axios["get"](url + `cargo/obtemTodos`).then(resp => {
     state.cargos = resp.data;
 });
 
-const Usuario = () => {
+const CriarUsuario = () => {
     
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -32,11 +32,7 @@ const Usuario = () => {
     const setSenha = (senha) => state.usuario.senha = senha;
     const setNome = (nome) => state.usuario.nome = nome;
     const setIdCargo = (idCargo) => state.usuario.idCargo = idCargo;
-
-    function teste(){
-        console.log(0);
-    }
-
+    
     const salvar = () => {
         axios["post"](url + `usuario/cria`, state.usuario).then(resp => {
             handleClose();
@@ -95,4 +91,4 @@ const Usuario = () => {
     );
 }
 
-export default Usuario;
+export default CriarUsuario;

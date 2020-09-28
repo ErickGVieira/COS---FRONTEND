@@ -12,6 +12,7 @@ import Pecas from './Componentes/Pecas/Pecas';
 import Orcamentos from './Componentes/Orcamentos/Orcamentos';
 import Usuarios from './Componentes/Usuarios/Usuarios';
 import Servicos from './Componentes/Servicos/Servicos';
+import Pagamentos from './Componentes/Pagamentos/Pagamentos';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -23,6 +24,7 @@ ReactDOM.render(
         <Route exact path='/orcamentos' component={Orcamentos}/>
         <Route exact path='/usuarios' component={Usuarios}/>
         <Route exact path='/servicos' component={Servicos}/>
+        <Route exact path='/pagamentos' component={Pagamentos}/>
         <Redirect from='*' to='/' />
     </Switch>
   </BrowserRouter>,

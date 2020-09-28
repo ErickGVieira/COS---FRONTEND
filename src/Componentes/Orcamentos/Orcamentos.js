@@ -3,7 +3,6 @@ import './Orcamentos.css';
 import Menu from '../Menu/Menu'
 
 import { Container, Row, Col, Table, Form, Button } from 'react-bootstrap';
-import Logo from '../../Imagens/logo.jpg';
 
 const url = "http://localhost:1100/api/orcamentos/";
 

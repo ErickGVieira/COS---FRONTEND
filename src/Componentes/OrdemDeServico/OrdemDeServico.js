@@ -5,6 +5,7 @@ import Menu from '../Menu/Menu'
 import { Container, Row, Col, Table, Form, Button } from 'react-bootstrap';
 import Logo from '../../Imagens/logo.jpg';
 
+import CriarOrdemDeServico from '../Modal/Ordem de Serviço/CriarOrdemDeServico';
 const url = "http://localhost:1100/api/OrdemDeServico/";
 
 export default class OrdemDeServico extends React.Component {
@@ -27,7 +28,7 @@ export default class OrdemDeServico extends React.Component {
                         </Row>
                     </Col>
                     <Col md={1}>
-                        <Button type="submit" className="mb-2">Adicionar</Button>
+                        <CriarOrdemDeServico />
                     </Col>
                 </Row>
 

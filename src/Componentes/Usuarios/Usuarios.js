@@ -4,7 +4,9 @@ import Menu from '../Menu/Menu'
 import axios from 'axios';
 
 import { Container, Row, Col, Table, Form, Button, Modal } from 'react-bootstrap';
-import Usuario from '../Modal/Usuario/Usuario';
+import CriarUsuario from '../Modal/Usuario/CriarUsuario';
+import VisualizarUsuario from '../Modal/Usuario/VisualizarUsuario';
+import EditarUsuario from '../Modal/Usuario/EditarUsuario';
 
 const url = "http://localhost:1100/api/";
 
@@ -14,13 +16,11 @@ const states = {
     ]
 }
 
-
 export default class Usuarios extends React.Component {
     state = {...states};
 
     componentWillMount(){
         axios["get"](url + `usuario/obtemTodos`).then(resp => {
-            // state.usuarios = resp.data;
             this.setState({usuarios: resp.data});
         });
     }
@@ -45,7 +45,7 @@ export default class Usuarios extends React.Component {
                             </Row>
                         </Col>
                         <Col md={1}>
-                            <Usuario />
+                            <CriarUsuario />
                         </Col>
                     </Row>
     
@@ -68,9 +68,9 @@ export default class Usuarios extends React.Component {
                                             <td>{usuario.nome}</td>
                                             <td>{usuario.cpf}</td>
                                             <td>{usuario.cargo.descricao}</td>
-                                            <td className='botoes'>
-                                                <Button variant="warning">Editar</Button>
-                                                <Button variant="danger">Remover</Button>
+                                            <td>
+                                                <VisualizarUsuario usuario={usuario.id}/>
+                                                <EditarUsuario usuario={usuario.id}/>
                                             </td>
                                         </tr>
                                     );
