@@ -1,7 +1,6 @@
 import React from 'react';
 import './Menu.css';
 import { Container, Nav, Image, Row } from 'react-bootstrap';
-import Logo from '../../Imagens/logo.jpg';
 
 export default class Menu extends React.Component {
 
@@ -10,33 +9,18 @@ export default class Menu extends React.Component {
             <div>
                 <Container id="menu">
                     <Row>
-                        <Image src={Logo} width="50" height="25" />
-
-                        {/* onSelect={(selectedKey) => alert(`selected ${selectedKey}`)} */}
-                        <Nav activeKey="/home">
+                        <Nav activeKey="/">
                             <Nav.Item>
-                                <Nav.Link href="/home">Ordens de Serviço</Nav.Link>
+                                <Nav.Link href="/">Aeronaves</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/clientes" eventKey="clientes">Clientes</Nav.Link>
+                                <Nav.Link href="/modelos" eventKey="modelos">Modelos</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/pecas" eventKey="pecas">Peças</Nav.Link>
+                                <Nav.Link href="/relatorios" eventKey="relatorios">Relatórios</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/orcamentos" eventKey="orcamentos">Orçamentos</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href="/usuarios" eventKey="usuarios">Usuários</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href="/pagamentos" eventKey="pagamentos">Pagamentos</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href="/servicos" eventKey="servicos">Servicos</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href="/" eventKey="sair">Sair</Nav.Link>
+                                <Nav.Link href="/importar" eventKey="importar">Importar</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Row>
